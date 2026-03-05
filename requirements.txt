@@ -1,26 +1,43 @@
-# Math Mentor AI - Streamlit Cloud Compatible
-# Only truly required + key optional packages that install cleanly
+# Math Mentor AI - Streamlit Cloud
+# Complete dependency list for full-featured deployment
 
-# Core UI
+# ── Core UI ──────────────────────────────────────────────
 streamlit>=1.30.0,<2.0.0
 streamlit-option-menu>=0.3.6
+audio-recorder-streamlit>=0.0.8
+plotly>=5.18.0
 
-# Required (bare imports in code)
+# ── Required (bare imports) ──────────────────────────────
 python-dotenv>=1.0.0
 numpy>=1.24.0
 Pillow>=10.0.0
 requests>=2.31.0
 
-# AI / LLM (optional in code, but needed for functionality)
+# ── AI / LLM Providers ──────────────────────────────────
 groq>=0.4.1
 google-generativeai>=0.3.2
 
-# Math (used inside try/except in mcp_integration.py)
+# ── Math & Science ───────────────────────────────────────
 sympy>=1.12
+scipy>=1.11.0
+matplotlib>=3.8.0
 
-# Input Processing (optional, wrapped in try/except)
+# ── Input Processing ────────────────────────────────────
 pytesseract>=0.3.10
 pydub>=0.25.1
+opencv-python-headless>=4.8.0
+soundfile>=0.12.1
 
-# Web Search (optional, wrapped in try/except)
+# ── Web Search ──────────────────────────────────────────
 duckduckgo-search>=5.0
+beautifulsoup4>=4.12.0
+
+# ── Data & Utilities ────────────────────────────────────
+pandas>=2.0.0
+
+# ── NOTE: Packages excluded due to Streamlit Cloud 1GB RAM limit ──
+# chromadb           → needs ~500MB+ (code falls back to in-memory storage)
+# sentence-transformers → needs torch ~2GB (code falls back to keyword search)
+# openai-whisper     → needs torch ~2GB (code falls back gracefully)
+# faiss-cpu          → heavy native build (not used in current code)
+# pyaudio            → needs portaudio C build (not available on Cloud)
