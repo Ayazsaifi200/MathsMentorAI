@@ -1,47 +1,38 @@
-# Math Mentor AI - Requirements
-# Core application dependencies (Streamlit Cloud compatible)
+# Math Mentor AI - Streamlit Cloud Compatible Requirements
 
-# Streamlit Web Framework
-streamlit==1.37.0
-plotly==5.18.0
-audio-recorder-streamlit==0.0.8
-streamlit-option-menu==0.3.6
-streamlit-extras==0.3.6
+streamlit>=1.37.0
+plotly>=5.18.0
+audio-recorder-streamlit>=0.0.8
+streamlit-option-menu>=0.3.6
+streamlit-extras>=0.3.6
 
-# Multimodal Input Processing
-pytesseract==0.3.10
-Pillow==10.2.0
-opencv-python-headless==4.8.1.78
-pydub==0.25.1
-soundfile==0.12.1
+pytesseract>=0.3.10
+Pillow>=10.2.0
+opencv-python-headless>=4.8.0
+pydub>=0.25.1
+soundfile>=0.12.1
 
-# Language Models & AI
-groq==0.4.1
-langchain==0.1.0
-langchain-community==0.0.20
-langgraph==0.0.26
-langchain-experimental==0.0.45
-google-generativeai==0.3.2
-langchain-google-genai==1.0.0
+groq>=0.4.1
+langchain>=0.1.0
+langchain-community>=0.0.20
+langgraph>=0.0.26
+langchain-experimental>=0.0.45
+google-generativeai>=0.3.2
+langchain-google-genai>=1.0.0
 
-# RAG & Vector Database
-chromadb==0.4.22
-sentence-transformers==2.2.2
-transformers==4.36.0
+chromadb>=0.4.22
+sentence-transformers>=2.2.2
 
-# Mathematical Computing
-sympy==1.12
-numpy==1.26.4
-scipy==1.11.4
-matplotlib==3.8.2
+sympy>=1.12
+numpy>=1.24.0
+scipy>=1.11.0
+matplotlib>=3.8.0
 
-# Web Search & External APIs
-duckduckgo-search==3.9.6
-google-api-python-client==2.108.0
+duckduckgo-search>=3.9.6
+google-api-python-client>=2.108.0
 
-# Development & Monitoring
-langsmith==0.0.69
-python-dotenv==1.0.0
+langsmith>=0.0.69
+python-dotenv>=1.0.0
 black==23.11.0               # Code formatting
 
 # MCP Integration
