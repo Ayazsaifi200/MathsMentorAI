@@ -2,5 +2,5 @@ tesseract-ocr
 tesseract-ocr-eng
 ffmpeg
 libsndfile1
-libgl1-mesa-glx
+libgl1
 portaudio19-dev
