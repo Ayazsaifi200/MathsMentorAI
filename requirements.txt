@@ -1,0 +1,66 @@
+# Math Mentor AI - Requirements
+# Core application dependencies
+
+# Streamlit Web Framework
+streamlit==1.37.0
+plotly==5.18.0               # Plotting library (compatible with Streamlit 1.37.0)
+audio-recorder-streamlit==0.0.8  # Audio recording widget
+streamlit-option-menu==0.3.6     # Enhanced UI components
+streamlit-extras==0.3.6          # Additional Streamlit widgets
+
+# Multimodal Input Processing
+pytesseract==0.3.10     # OCR processing
+Pillow==10.2.0           # Image processing
+opencv-python==4.8.1.78 # Advanced image processing
+openai-whisper==20231117 # Speech-to-text
+pyaudio==0.2.11          # Audio input
+pydub==0.25.1            # Audio format conversion
+soundfile==0.12.1        # Audio file I/O
+
+# Language Models & AI
+groq==0.4.1                     # Groq LLM API (Primary AI Provider)
+google-generativeai==0.3.2      # Google Gemini Pro (Legacy)
+langchain==0.1.0                # LLM framework
+langchain-google-genai==1.0.0   # Google integration
+langchain-community==0.0.20     # Community integrations
+langgraph==0.0.26               # Agent workflows
+langchain-experimental==0.0.45  # Experimental features
+
+# RAG & Vector Database
+chromadb==0.4.22               # Primary vector DB
+faiss-cpu==1.7.4              # Alternative vector search
+sentence-transformers==2.2.2   # Text embeddings
+transformers==4.36.0          # Transformer models
+unstructured==0.11.6          # Document processing
+
+# Mathematical Computing
+sympy==1.12                   # Symbolic mathematics
+numpy==1.24.3                # Numerical computing
+scipy==1.11.4                # Scientific computing
+matplotlib==3.8.2            # Plotting
+
+# Web Search & External APIs
+duckduckgo-search==3.9.6     # Web search
+google-api-python-client==2.108.0  # Google APIs
+
+# Security & Guardrails
+llm-guard==0.3.2             # Content filtering
+
+# Development & Monitoring  
+langsmith==0.0.69            # LangChain monitoring
+pytest==7.4.3               # Testing framework
+python-dotenv==1.0.0         # Environment management
+jupyter==1.0.0               # Notebook development
+black==23.11.0               # Code formatting
+
+# MCP Integration
+mcp==0.4.0                   # Model Context Protocol
+
+# Utilities
+pandas                       # Data manipulation (for UI)
+requests                     # HTTP requests
+beautifulsoup4              # Web scraping utilities
+sqlite3                     # Database (built-in Python)
+streamlit-webrtc==0.45.0     # Real-time audio/video
+plotly==5.18.0               # Already included above
+streamlit-aggrid==0.3.4      # Enhanced data tables

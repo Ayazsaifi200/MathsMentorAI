@@ -1,0 +1,33 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+dist/
+build/
+
+# Environment variables
+.env
+
+# Logs
+logs/*.log
+
+# Data (large/generated files)
+data/chroma_db/
+data/*.db
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Whisper model cache
+*.pt

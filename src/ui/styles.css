@@ -1,0 +1,669 @@
+/* Math Mentor AI - Exact Interface Recreation */
+
+/* ============ GLOBAL STYLES ============ */
+* {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+    box-sizing: border-box;
+}
+
+/* Remove Streamlit default elements */
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+.stDeployButton {display: none;}
+.stDecoration {display: none;}
+
+/* ============ DARK THEME BASE ============ */
+.stApp {
+    background-color: #0e1117;
+    color: #fafafa;
+}
+
+.main .block-container {
+    background-color: #0e1117;
+    color: #fafafa;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    max-width: 1200px;
+}
+
+/* ============ MATH SYMBOLS TOOLBAR ============ */
+.math-symbols-toolbar {
+    background: #262730;
+    border: 1px solid #404148;
+    border-radius: 8px;
+    padding: 12px;
+    margin: 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.math-symbol-row {
+    display: flex;
+    gap: 6px;
+    justify-content: center;
+}
+
+.math-symbol-btn {
+    background: transparent;
+    color: #fafafa;
+    border: none;
+    border-radius: 8px;
+    padding: 0.4rem 0.6rem;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-align: center;
+    min-width: 35px;
+}
+
+/* Streamlit button overrides - target all buttons in columns */
+div[data-testid="column"] button,
+.stButton > button {
+    background: transparent !important;
+    color: #fafafa !important;
+    border: 1px solid #404148 !important;
+    border-radius: 8px !important;
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+}
+
+/* ============ QUICK EXAMPLES SECTION ============ */
+.quick-examples-header {
+    color: #ff6b6b;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 20px 0 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.examples-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin-bottom: 20px;
+}
+
+.example-btn {
+    background: transparent;
+    color: #fafafa;
+    border: none;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-weight: 400;
+    cursor: pointer;
+    text-align: center;
+}
+
+/* ============ PASTE SUPPORT SECTION ============ */
+.paste-support {
+    background: #1a1d26;
+    border: 1px solid #404148;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.paste-support-header {
+    color: #f59e0b;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.paste-support-text {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+/* ============ TEXT INPUT AREAS ============ */
+.stTextArea textarea {
+    background-color: #262730 !important;
+    color: #fafafa !important;
+    border: 2px solid #404148 !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    font-size: 14px !important;
+    line-height: 1.5 !important;
+    font-family: 'Segoe UI', sans-serif !important;
+    resize: vertical !important;
+    transition: border-color 0.2s ease !important;
+}
+
+.stTextArea textarea:focus {
+    border-color: #667eea !important;
+    box-shadow: 0 0 0 1px #667eea !important;
+    outline: none !important;
+}
+
+.stTextArea textarea::placeholder {
+    color: #6b7280 !important;
+    font-style: italic;
+}
+
+/* ============ BUTTONS ============ */
+/* All buttons get borders by default */
+button[data-testid="baseButton-secondary"],
+button[data-testid="baseButton-primary"] {
+    background: transparent !important;
+    color: #fafafa !important;
+    border: 1px solid #404148 !important;
+    border-radius: 8px !important;
+    padding: 0.4rem 0.6rem !important;
+    font-size: 0.85rem !important;
+    font-weight: 500 !important;
+    cursor: pointer !important;
+    text-transform: none !important;
+}
+
+.secondary-btn {
+    background: transparent !important;
+    color: #fafafa !important;
+}
+
+/* ============ SOLUTION DISPLAY ============ */
+.solution-container {
+    background: #1a1d26;
+    border: 1px solid #404148;
+    border-radius: 12px;
+    padding: 24px;
+    margin: 24px 0;
+}
+
+.answer-section {
+    margin-bottom: 24px;
+}
+
+.answer-label {
+    color: #fafafa;
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 16px;
+}
+
+.answer-box {
+    background: #d1fae5;
+    border: 1px solid #10b981;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+    text-align: center;
+}
+
+.answer-content {
+    color: #065f46;
+    font-size: 18px;
+    font-weight: 600;
+    font-style: italic;
+    margin: 8px 0;
+}
+
+.math-equation {
+    font-size: 24px;
+    font-weight: bold;
+    color: #059669;
+    margin: 12px 0;
+}
+
+.error-answer {
+    background: #fef2f2;
+    border-color: #ef4444;
+}
+
+.error-answer .answer-content {
+    color: #dc2626;
+}
+
+/* ============ SOLUTION STEPS ============ */
+.solution-steps-header {
+    color: #fafafa;
+    font-size: 16px;
+    font-weight: 600;
+    margin: 24px 0 16px 0;
+}
+
+.step-expander {
+    background: #262730;
+    border: 1px solid #404148;
+    border-radius: 8px;
+    margin: 8px 0;
+}
+
+.step-expander summary {
+    background: #2d3142;
+    color: #fafafa;
+    padding: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 8px 8px 0 0;
+    transition: background 0.2s ease;
+}
+
+.step-expander summary:hover {
+    background: #404148;
+}
+
+.step-content {
+    padding: 16px;
+    background: #1a1d26;
+    border-radius: 0 0 8px 8px;
+}
+
+.step-work {
+    color: #fafafa;
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 12px;
+}
+
+.step-reasoning {
+    color: #9ca3af;
+    font-size: 13px;
+    font-style: italic;
+}
+
+/* ============ RIGHT SIDEBAR SECTIONS ============ */
+.topic-section, .knowledge-section, .verification-section {
+    background: #1a1d26;
+    border: 1px solid #404148;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+}
+
+.section-title {
+    color: #fafafa;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+.topic-tag {
+    background: #374151;
+    color: #fafafa;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.knowledge-dropdown {
+    background: #262730;
+    color: #f59e0b;
+    border: 1px solid #404148;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    cursor: pointer;
+    width: 100%;
+    margin-top: 8px;
+}
+
+.confidence-display {
+    color: #fafafa;
+    font-size: 14px;
+    margin: 8px 0;
+}
+
+/* ============ TOGGLES AND CHECKBOXES ============ */
+.stCheckbox {
+    color: #fafafa !important;
+}
+
+.stCheckbox > div {
+    color: #fafafa !important;
+}
+
+.stRadio {
+    color: #fafafa !important;
+}
+
+.stRadio > div {
+    color: #fafafa !important;
+}
+
+/* ============ FEEDBACK SECTION ============ */
+.feedback-section {
+    background: #1a1d26;
+    border: 1px solid #404148;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 24px 0;
+}
+
+.feedback-buttons {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.feedback-btn {
+    background: #374151;
+    color: #fafafa;
+    border: 1px solid #4b5563;
+    border-radius: 6px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.feedback-btn:hover {
+    background: #4b5563;
+    border-color: #667eea;
+}
+
+.feedback-btn.helpful {
+    background: #059669;
+    border-color: #10b981;
+}
+
+.feedback-btn.not-helpful {
+    background: #dc2626;
+    border-color: #ef4444;
+}
+
+/* ============ KEY INSIGHTS ============ */
+.insights-section {
+    margin: 20px 0;
+}
+
+.insights-header {
+    color: #f59e0b;
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.insight-item {
+    color: #d1d5db;
+    font-size: 14px;
+    margin: 8px 0;
+    padding-left: 8px;
+    border-left: 2px solid #f59e0b;
+    padding-left: 12px;
+}
+
+/* ============ MULTIMODAL INPUT SECTIONS ============ */
+.upload-area {
+    background: #1a1d26;
+    border: 2px dashed #404148;
+    border-radius: 12px;
+    padding: 32px;
+    text-align: center;
+    margin: 16px 0;
+    transition: all 0.2s ease;
+}
+
+.upload-area:hover {
+    border-color: #667eea;
+    background: #262730;
+}
+
+.upload-text {
+    color: #9ca3af;
+    font-size: 16px;
+    margin-bottom: 8px;
+}
+
+.file-info {
+    color: #6b7280;
+    font-size: 12px;
+}
+
+.browse-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    margin-top: 16px;
+}
+
+.browse-btn:hover {
+    background: #5b6fd8;
+}
+
+/* ============ AUDIO RECORDING ============ */
+.record-section {
+    background: #1a1d26;
+    border: 1px solid #404148;
+    border-radius: 8px;
+    padding: 20px;
+    margin: 16px 0;
+    text-align: center;
+}
+
+.record-btn {
+    background: #ef4444;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    cursor: pointer;
+    margin: 16px 0;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(239, 68, 68, 0.3);
+}
+
+.record-btn:hover {
+    background: #dc2626;
+    transform: scale(1.05);
+}
+
+.recording-status {
+    color: #f59e0b;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 8px 0;
+}
+
+/* ============ PROGRESS INDICATORS ============ */
+.progress-text {
+    color: #667eea;
+    font-size: 14px;
+    font-weight: 500;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.progress-spinner {
+    width: 16px;
+    height: 16px;
+    border: 2px solid #404148;
+    border-top: 2px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ============ WORKFLOW INDICATORS ============ */
+.workflow-section {
+    margin: 20px 0;
+}
+
+.workflow-toggle {
+    color: #667eea !important;
+}
+
+/* ============ EXPANDER AND ACCORDION STYLES ============ */
+.stExpander {
+    background: #262730 !important;
+    border: 1px solid #404148 !important;
+    border-radius: 8px !important;
+    margin: 8px 0 !important;
+}
+
+.stExpander > summary {
+    background: #2d3142 !important;
+    color: #fafafa !important;
+    padding: 16px !important;
+    font-weight: 500 !important;
+    border-radius: 8px 8px 0 0 !important;
+}
+
+.stExpander > summary:hover {
+    background: #404148 !important;
+}
+
+.stExpander > div {
+    background: #1a1d26 !important;
+    color: #fafafa !important;
+    padding: 16px !important;
+    border-radius: 0 0 8px 8px !important;
+}
+
+/* ============ SIDEBAR STYLING ============ */
+.css-1d391kg {
+    background-color: #0e1117 !important;
+}
+
+.css-1cypcdb {
+    background-color: #0e1117 !important;
+}
+
+/* ============ METRIC DISPLAY ============ */
+.stMetric {
+    background: #1a1d26 !important;
+    border: 1px solid #404148 !important;
+    border-radius: 8px !important;
+    padding: 16px !important;
+    margin: 8px 0 !important;
+}
+
+.stMetric > div {
+    color: #fafafa !important;
+}
+
+.stMetric label {
+    color: #9ca3af !important;
+    font-size: 14px !important;
+}
+
+.stMetric [data-testid="metric-value"] {
+    color: #fafafa !important;
+    font-size: 24px !important;
+    font-weight: 600 !important;
+}
+
+/* ============ SELECTBOX AND DROPDOWN ============ */
+.stSelectbox {
+    color: #fafafa !important;
+}
+
+.stSelectbox > div > div {
+    background-color: #262730 !important;
+    color: #fafafa !important;
+    border: 1px solid #404148 !important;
+}
+
+.stSelectbox option {
+    background-color: #262730 !important;
+    color: #fafafa !important;
+}
+
+/* ============ FILE UPLOADER ============ */
+.stFileUploader {
+    background: #1a1d26 !important;
+    border: 2px dashed #404148 !important;
+    border-radius: 8px !important;
+    padding: 8px !important;
+    margin: 4px 0 !important;
+    min-height: 60px !important;
+    max-height: 80px !important;
+}
+
+.stFileUploader > div {
+    color: #9ca3af !important;
+}
+
+.stFileUploader label {
+    color: #fafafa !important;
+    font-weight: 400 !important;
+    font-size: 11px !important;
+}
+
+.stFileUploader section {
+    min-height: 50px !important;
+    max-height: 70px !important;
+}
+
+.stFileUploader section > div {
+    padding: 4px !important;
+}
+
+.stFileUploader [data-testid="stFileUploaderDropzone"] {
+    min-height: 50px !important;
+    max-height: 70px !important;
+    padding: 4px !important;
+}
+
+.stFileUploader [data-testid="stFileUploaderDropzoneInstructions"] {
+    font-size: 9px !important;
+    display: none !important;
+}
+
+.stFileUploader button {
+    font-size: 10px !important;
+    padding: 4px 8px !important;
+}
+
+/* ============ FOOTER ============ */
+.footer-text {
+    color: #6b7280;
+    font-size: 12px;
+    text-align: center;
+    margin: 32px 0 16px 0;
+    padding: 16px 0;
+    border-top: 1px solid #404148;
+}
+
+/* ============ RESPONSIVE DESIGN ============ */
+@media (max-width: 768px) {
+    .examples-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .math-symbol-row {
+        flex-wrap: wrap;
+    }
+    
+    .feedback-buttons {
+        flex-direction: column;
+    }
+    
+    .solution-container {
+        padding: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .examples-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .math-symbol-btn {
+        min-width: 35px;
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+}
