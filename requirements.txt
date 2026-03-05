@@ -1,43 +1,26 @@
-# Math Mentor AI - Streamlit Cloud
-streamlit>=1.37.0
-plotly>=5.18.0
+# Math Mentor AI - Streamlit Cloud Compatible
+# Only truly required + key optional packages that install cleanly
+
+# Core UI
+streamlit>=1.30.0,<2.0.0
 streamlit-option-menu>=0.3.6
 
-# Input Processing
+# Required (bare imports in code)
+python-dotenv>=1.0.0
+numpy>=1.24.0
+Pillow>=10.0.0
+requests>=2.31.0
+
+# AI / LLM (optional in code, but needed for functionality)
+groq>=0.4.1
+google-generativeai>=0.3.2
+
+# Math (used inside try/except in mcp_integration.py)
+sympy>=1.12
+
+# Input Processing (optional, wrapped in try/except)
 pytesseract>=0.3.10
-Pillow>=10.2.0
 pydub>=0.25.1
 
-# AI / LLM
-groq>=0.4.1
-langchain>=0.1.0,<0.2.0
-langchain-community>=0.0.20,<0.1.0
-langgraph>=0.0.26
-google-generativeai>=0.3.2
-langchain-google-genai>=1.0.0,<2.0.0
-
-# Math
-sympy>=1.12
-numpy>=1.24.0
-scipy>=1.11.0
-matplotlib>=3.8.0
-
-# Web Search
-duckduckgo-search>=3.9.6
-
-# Utilities
-langsmith>=0.0.69
-python-dotenv>=1.0.0
-black==23.11.0               # Code formatting
-
-# MCP Integration
-mcp==0.4.0                   # Model Context Protocol
-
-# Utilities
-pandas                       # Data manipulation (for UI)
-requests                     # HTTP requests
-beautifulsoup4              # Web scraping utilities
-sqlite3                     # Database (built-in Python)
-streamlit-webrtc==0.45.0     # Real-time audio/video
-plotly==5.18.0               # Already included above
-streamlit-aggrid==0.3.4      # Enhanced data tables
+# Web Search (optional, wrapped in try/except)
+duckduckgo-search>=5.0

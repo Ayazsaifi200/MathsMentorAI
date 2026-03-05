@@ -12,6 +12,16 @@ import logging
 # Load environment variables
 load_dotenv()
 
+# Streamlit Cloud injects secrets as env vars, but also try st.secrets as fallback
+try:
+    import streamlit as st
+    if hasattr(st, 'secrets'):
+        for key in st.secrets:
+            if key not in os.environ:
+                os.environ[key] = str(st.secrets[key])
+except Exception:
+    pass
+
 class Config:
     """Configuration class for Math Mentor AI application"""
     
