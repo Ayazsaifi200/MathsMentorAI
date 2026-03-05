@@ -11,9 +11,8 @@ streamlit-extras==0.3.6          # Additional Streamlit widgets
 # Multimodal Input Processing
 pytesseract==0.3.10     # OCR processing
 Pillow==10.2.0           # Image processing
-opencv-python==4.8.1.78 # Advanced image processing
+opencv-python-headless==4.8.1.78 # Image processing (headless for cloud)
 openai-whisper==20231117 # Speech-to-text
-pyaudio==0.2.11          # Audio input
 pydub==0.25.1            # Audio format conversion
 soundfile==0.12.1        # Audio file I/O
 
@@ -48,6 +47,9 @@ llm-guard==0.3.2             # Content filtering
 
 # Development & Monitoring  
 langsmith==0.0.69            # LangChain monitoring
+
+# Python Environment
+python-dotenv==1.0.0         # Environment variables
 pytest==7.4.3               # Testing framework
 python-dotenv==1.0.0         # Environment management
 jupyter==1.0.0               # Notebook development
