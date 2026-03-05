@@ -1,36 +1,31 @@
-# Math Mentor AI - Streamlit Cloud Compatible Requirements
-
+# Math Mentor AI - Streamlit Cloud
 streamlit>=1.37.0
 plotly>=5.18.0
-audio-recorder-streamlit>=0.0.8
 streamlit-option-menu>=0.3.6
-streamlit-extras>=0.3.6
 
+# Input Processing
 pytesseract>=0.3.10
 Pillow>=10.2.0
-opencv-python-headless>=4.8.0
 pydub>=0.25.1
-soundfile>=0.12.1
 
+# AI / LLM
 groq>=0.4.1
-langchain>=0.1.0
-langchain-community>=0.0.20
+langchain>=0.1.0,<0.2.0
+langchain-community>=0.0.20,<0.1.0
 langgraph>=0.0.26
-langchain-experimental>=0.0.45
 google-generativeai>=0.3.2
-langchain-google-genai>=1.0.0
+langchain-google-genai>=1.0.0,<2.0.0
 
-chromadb>=0.4.22
-sentence-transformers>=2.2.2
-
+# Math
 sympy>=1.12
 numpy>=1.24.0
 scipy>=1.11.0
 matplotlib>=3.8.0
 
+# Web Search
 duckduckgo-search>=3.9.6
-google-api-python-client>=2.108.0
 
+# Utilities
 langsmith>=0.0.69
 python-dotenv>=1.0.0
 black==23.11.0               # Code formatting
