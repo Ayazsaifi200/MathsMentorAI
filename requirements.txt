@@ -1,58 +1,47 @@
 # Math Mentor AI - Requirements
-# Core application dependencies
+# Core application dependencies (Streamlit Cloud compatible)
 
 # Streamlit Web Framework
 streamlit==1.37.0
-plotly==5.18.0               # Plotting library (compatible with Streamlit 1.37.0)
-audio-recorder-streamlit==0.0.8  # Audio recording widget
-streamlit-option-menu==0.3.6     # Enhanced UI components
-streamlit-extras==0.3.6          # Additional Streamlit widgets
+plotly==5.18.0
+audio-recorder-streamlit==0.0.8
+streamlit-option-menu==0.3.6
+streamlit-extras==0.3.6
 
 # Multimodal Input Processing
-pytesseract==0.3.10     # OCR processing
-Pillow==10.2.0           # Image processing
-opencv-python-headless==4.8.1.78 # Image processing (headless for cloud)
-openai-whisper==20231117 # Speech-to-text
-pydub==0.25.1            # Audio format conversion
-soundfile==0.12.1        # Audio file I/O
+pytesseract==0.3.10
+Pillow==10.2.0
+opencv-python-headless==4.8.1.78
+pydub==0.25.1
+soundfile==0.12.1
 
 # Language Models & AI
-groq==0.4.1                     # Groq LLM API (Primary AI Provider)
-google-generativeai==0.3.2      # Google Gemini Pro (Legacy)
-langchain==0.1.0                # LLM framework
-langchain-google-genai==1.0.0   # Google integration
-langchain-community==0.0.20     # Community integrations
-langgraph==0.0.26               # Agent workflows
-langchain-experimental==0.0.45  # Experimental features
+groq==0.4.1
+langchain==0.1.0
+langchain-community==0.0.20
+langgraph==0.0.26
+langchain-experimental==0.0.45
+google-generativeai==0.3.2
+langchain-google-genai==1.0.0
 
 # RAG & Vector Database
-chromadb==0.4.22               # Primary vector DB
-faiss-cpu==1.7.4              # Alternative vector search
-sentence-transformers==2.2.2   # Text embeddings
-transformers==4.36.0          # Transformer models
-unstructured==0.11.6          # Document processing
+chromadb==0.4.22
+sentence-transformers==2.2.2
+transformers==4.36.0
 
 # Mathematical Computing
-sympy==1.12                   # Symbolic mathematics
-numpy==1.24.3                # Numerical computing
-scipy==1.11.4                # Scientific computing
-matplotlib==3.8.2            # Plotting
+sympy==1.12
+numpy==1.26.4
+scipy==1.11.4
+matplotlib==3.8.2
 
 # Web Search & External APIs
-duckduckgo-search==3.9.6     # Web search
-google-api-python-client==2.108.0  # Google APIs
+duckduckgo-search==3.9.6
+google-api-python-client==2.108.0
 
-# Security & Guardrails
-llm-guard==0.3.2             # Content filtering
-
-# Development & Monitoring  
-langsmith==0.0.69            # LangChain monitoring
-
-# Python Environment
-python-dotenv==1.0.0         # Environment variables
-pytest==7.4.3               # Testing framework
-python-dotenv==1.0.0         # Environment management
-jupyter==1.0.0               # Notebook development
+# Development & Monitoring
+langsmith==0.0.69
+python-dotenv==1.0.0
 black==23.11.0               # Code formatting
 
 # MCP Integration
